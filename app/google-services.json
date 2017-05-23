@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "68002845206",
+    "project_id": "socialsignin-b8826"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68002845206:android:6b42f43279a5075e",
+        "android_client_info": {
+          "package_name": "com.droid.socialsignin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68002845206-rg6i1se57cs0srorvphmf2a58h2rm1ov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.droid.socialsignin",
+            "certificate_hash": "2a8ffb0dc91bb3afbeccbc57ab017c7e77ccebd8"
+          }
+        },
+        {
+          "client_id": "68002845206-6ibcipmjb2759o9qjfj1gavrl8e87tre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK6_QFA_Ww1Cqy63c0cpS2ZuX1VpS8nUU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
