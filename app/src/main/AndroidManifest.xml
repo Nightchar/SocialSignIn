@@ -20,8 +20,6 @@
 
         <activity android:name=".Activity.GoogleSignInActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Activity.GooglePlusSignInActivity"
-                  android:screenOrientation="portrait"/>
         <activity android:name=".Activity.FacebookSignInActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".Activity.TwitterSignInActivity"

@@ -14,7 +14,6 @@ public class SocialSignInActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social_sign_in);
         findViewById(R.id.btn_google_sign_in).setOnClickListener(this);
-        findViewById(R.id.btn_googl_plus_sign_in).setOnClickListener(this);
         findViewById(R.id.btn_facebook_sign_in).setOnClickListener(this);
         findViewById(R.id.btn_twitter_sign_in).setOnClickListener(this);
     }
@@ -24,8 +23,6 @@ public class SocialSignInActivity extends AppCompatActivity implements View.OnCl
         switch(v.getId()) {
             case R.id.btn_google_sign_in:
                 startActivity(new Intent(SocialSignInActivity.this, GoogleSignInActivity.class));
-                break;
-            case R.id.btn_googl_plus_sign_in:
                 break;
             case R.id.btn_facebook_sign_in:
                 break;
