@@ -12,4 +12,8 @@
 
     <!-- Content Description for images -->
     <string name="desc_google_icon">Google Logo</string>
+
+    <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
+         from https://console.developers.google.com/ -->
+    <string name="server_client_id">68002845206-6ibcipmjb2759o9qjfj1gavrl8e87tre.apps.googleusercontent.com</string>
 </resources>
