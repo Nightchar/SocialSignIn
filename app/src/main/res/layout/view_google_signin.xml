@@ -24,8 +24,13 @@
             android:layout_marginTop="@dimen/g_top_margin"
             android:contentDescription="@string/desc_google_icon"
             android:src="@drawable/googleg_color" />
-
-        <TextView
+        <ImageView
+            android:id="@+id/imgProfilePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:visibility="gone"/>
+<!--        <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +38,8 @@
             android:text="@string/title_text"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            android:visibility="gone"/>-->
 
         <TextView
             android:id="@+id/status"

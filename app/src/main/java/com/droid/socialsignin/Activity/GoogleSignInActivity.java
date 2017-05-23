@@ -10,8 +10,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.droid.socialsignin.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -19,6 +22,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Scopes;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
@@ -35,8 +39,9 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
     private static final String TAG = "GoogleSignInActivity";
     private static final int RC_SIGN_IN = 9001;
     private GoogleApiClient mGoogleApiClient = null;
-    private TextView mStatusTextView;
-    private ProgressDialog mProgressDialog;
+    private TextView mStatusTextView = null;
+    private ImageView mImageProfilePic = null;
+    private ProgressDialog mProgressDialog = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +50,7 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
 
         // Views
         mStatusTextView = (TextView) findViewById(R.id.status);
+        mImageProfilePic  = (ImageView) findViewById(R.id.imgProfilePic);
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -54,8 +60,8 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestScopes(new Scope(Scopes.DRIVE_APPFOLDER)) // optional, for access google drive
-                .requestIdToken(getString(R.string.server_client_id)) // optional, for getting IdToken
+                //.requestScopes(new Scope(Scopes.DRIVE_APPFOLDER)) // optional, for access google drive
+                //.requestIdToken(getString(R.string.server_client_id)) // optional, for getting IdToken
                 .requestEmail()
                 .build();
 
@@ -66,8 +72,9 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-//        SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-//        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+//        signInButton.setScopes(gso.getScopeArray());
     }
 
     @Override
@@ -181,7 +188,16 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
             text += "FamilyName: " + acct.getFamilyName() + ",";
             text += "GivenName: " + acct.getGivenName() + ",";
             text += "Id: " + acct.getId() + ",";
-            text += "IdToken: " + acct.getIdToken();
+            //text += "IdToken: " + acct.getIdToken();
+
+            Uri photoUri = acct.getPhotoUrl();
+            if (photoUri != null) {
+                Glide.with(getApplicationContext()).load(photoUri.toString())
+                        .thumbnail(0.5f)
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(mImageProfilePic);
+            }
 
             mStatusTextView.setText(getString(R.string.signed_in_fmt, text));
             updateUI(true);
@@ -195,9 +211,11 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+            mImageProfilePic.setVisibility(View.VISIBLE);
         } else {
             mStatusTextView.setText(R.string.signed_out);
 
+            mImageProfilePic.setVisibility(View.GONE);
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
