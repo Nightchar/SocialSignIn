@@ -25,8 +25,10 @@ public class SocialSignInActivity extends AppCompatActivity implements View.OnCl
                 startActivity(new Intent(SocialSignInActivity.this, GoogleSignInActivity.class));
                 break;
             case R.id.btn_facebook_sign_in:
+                startActivity(new Intent(SocialSignInActivity.this, FacebookSignInActivity.class));
                 break;
             case R.id.btn_twitter_sign_in:
+                startActivity(new Intent(SocialSignInActivity.this, TwitterSignInActivity.class));
                 break;
         }
     }

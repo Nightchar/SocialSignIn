@@ -8,23 +8,32 @@
     android:orientation="vertical"
     tools:context="com.droid.socialsignin.Activity.SocialSignInActivity">
 
-    <Button
-        android:id="@+id/btn_google_sign_in"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Google Sign In"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_facebook_sign_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Facebook Sign In"/>
+        <ImageView
+            android:id="@+id/btn_google_sign_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_gmail"/>
 
-    <Button
-        android:id="@+id/btn_twitter_sign_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Twitter Sign In"/>
+        <ImageView
+            android:id="@+id/btn_facebook_sign_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_f_icon"/>
 
-
+        <ImageView
+            android:id="@+id/btn_twitter_sign_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_twitter_bird_logo_2012"/>
+    </LinearLayout>
 </LinearLayout>
